@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./custom.css" />
+
+        <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
+        <script src="./bower_components/jquery/dist/jquery.js"></script>
+        <script src="./bower_components/jquery/dist/jquery.js"></script>
+        <script src='./bower_components/markdown-it/dist/markdown-it.js'></script>
+        <script src="./bower_components/toMark/dist/toMark.js"></script>
+        <script src="./bower_components/tui-code-snippet/dist/tui-code-snippet.js"></script>
+        <script src="./bower_components/codemirror/lib/codemirror.js"></script>
+        <script src="./bower_components/highlightjs/highlight.pack.js"></script>
+        <script src="./bower_components/squire-rte/build/squire-raw.js"></script>
+        <script src="./bower_components/tui-editor/dist/tui-editor-Editor.js"></script>
+        <link rel="stylesheet" href="./bower_components/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="./bower_components/highlightjs/styles/github.css">
+        <link rel="stylesheet" href="./bower_components/tui-editor/dist/tui-editor.css">
+        <link rel="stylesheet" href="./bower_components/tui-editor/dist/tui-editor-contents.css">
+
+        <script src="main.js"></script>
+    </head>
+
+    <body data-offset="20">
+ 
+        <div class="container">
+            <ul class="nav nav-tabs" id="notes-opened">
+
+            </ul>
+
+            <!-- Toggable panel -->
+            <nav class="panel panel-default">
+                <nav class="col-sm-3" id="scrollSpy">
+                    <div class="container-fluid">
+                        <div id="mySidenav" class="sidenav">
+                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                <ul id="notes">
+                                </ul>
+                        </div>
+                    </div>
+                </nav>
+            </nav>
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+            <script>
+                function openNav() {
+                    document.getElementById("mySidenav").style.width = "250px";
+                }
+                
+                function closeNav() {
+                    document.getElementById("mySidenav").style.width = "0";
+                }
+            </script>
+            <script src="view.js"></script>
+
+            <!-- New note creation -->
+            <button class="btn btn-primary" id="create-new-note">Create new note</button>
+            <script src="newnote.js"></script>
+
+            <!-- Editor + note opened -->
+            <div id="note-opened" name="">
+            </div>
+            <script src="editor.js"></script>
+
+            <!-- Save file stuff -->
+            <script src="savefile.js"></script>
+        </div>
+    </body>
+</html>
