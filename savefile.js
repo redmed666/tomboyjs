@@ -7,14 +7,14 @@ globalShortcut.register('CommandOrControl+S', () => {
     let noteXML = new DOMParser().parseFromString(note, 'application/xml');
     
     let newContent = editor.getValue();
-    let newTitle = $('<textarea />').html(editor.getValue()).text().split('\n')[0].replace('#','');
+    let newTitle = $('<textarea />').html(editor.getValue()).text().split('\n')[0].replace('#','').trim();
 
     linkMap.set(notepath, newTitle);
     linkMap.forEach((value, key) => {
         if (value !== newTitle) {
             let varReg = '^'+value+'|'+value+'$'+'|'+' '+value+'|'+value + ' '
             let regVal = new RegExp(varReg, 'g');
-            newContent = newContent.replace(regVal, '<a href=\"'+ key +'\">'+ value +'</a>');
+            newContent = newContent.replace(regVal, ' <a href=\"'+ key +'\">'+ value +'</a> ');
         }
     })
     noteXML.getElementsByTagName('title')[0].textContent = newTitle;

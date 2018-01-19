@@ -9,7 +9,7 @@ function openFile(notepath) {
     }
     let note = fs.readFileSync(notepath);
     let noteXML = new DOMParser().parseFromString(note, 'application/xml');
-    let title = noteXML.getElementsByTagName('title')[0].textContent.replace('#','');
+    let title = noteXML.getElementsByTagName('title')[0].textContent.replace('#','').trim();
     
     if ($("a[id*='"+notepath+"']").length !== 0) {
         return;
@@ -48,7 +48,7 @@ function updateDisplayNotes() {
         let notepath = notespath+file;
         let note = fs.readFileSync(notepath);
         let noteXML = new DOMParser().parseFromString(note, 'application/xml');
-        let title = noteXML.getElementsByTagName('title')[0].textContent.replace('#','');
+        let title = noteXML.getElementsByTagName('title')[0].textContent.replace('#','').trim();
         let updatedList = '<li><button class=\"btn btn-secondary\" onClick=\"openFile(this.id)\" id=\"'+notespath+file+'\">'+title+'</button></li>';
         $('#notes').append(updatedList);
 
