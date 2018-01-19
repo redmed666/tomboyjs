@@ -10,6 +10,11 @@ function openFile(notepath) {
     let note = fs.readFileSync(notepath);
     let noteXML = new DOMParser().parseFromString(note, 'application/xml');
     let title = noteXML.getElementsByTagName('title')[0].textContent.replace('#','');
+    
+    if ($("a[id*='"+notepath+"']").length !== 0) {
+        return;
+    }
+
     let newTab = '<li class=\"nav-item\"><a class=\"nav-link\" onClick=\"updateEditor(this.id)\" id=\"'+ notepath +'\">'+ title +'</a></li>';
     $('#notes-opened').append(newTab);
 }
@@ -56,6 +61,13 @@ document.addEventListener('click', function (event) {
         event.preventDefault();
         openFile(event.target.href.replace('file://',''));
     }
-})
+});
+
+$(document).ready(function(){
+    $('.li a').click(function() {
+        $(this).siblings('a').removeClass('active');
+        $(this).addClass('active');
+    });
+});
 
 updateDisplayNotes();

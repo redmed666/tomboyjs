@@ -15,7 +15,6 @@ globalShortcut.register('CommandOrControl+S', () => {
             let varReg = '^'+value+'|'+value+'$'+'|'+' '+value+'|'+value + ' '
             let regVal = new RegExp(varReg, 'g');
             newContent = newContent.replace(regVal, '<a href=\"'+ key +'\">'+ value +'</a>');
-
         }
     })
     noteXML.getElementsByTagName('title')[0].textContent = newTitle;
@@ -25,5 +24,5 @@ globalShortcut.register('CommandOrControl+S', () => {
     fs.writeFileSync(notepath, newNoteToWrite);
     updateDisplayNotes();
     editor.setValue(newContent);
-
+    $("a[id*='"+notepath+"']").val(newTitle);
 });
