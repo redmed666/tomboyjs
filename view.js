@@ -4,9 +4,19 @@ let os = require('os');
 let notespath = os.homedir() + '/tomboynotes/';
 
 function openFile(notepath) {
+    if (!fs.existsSync(notepath)) {
+        alert('File doesn\'t exist! File requested = ' + notepath);
+    }
     let note = fs.readFileSync(notepath);
     let noteXML = new DOMParser().parseFromString(note, 'application/xml');
-    console.log(noteXML);
+    let title = noteXML.getElementsByTagName('title')[0].textContent;
+    let newTab = '<li class=\"nav-item\"><a class=\"nav-link\" onClick=\"updateEditor(this.id)\" id=\"'+ notepath +'\">'+ title +'</a></li>';
+    $('#notes-opened').append(newTab);
+}
+
+function updateEditor(notepath) {
+    let note = fs.readFileSync(notepath);
+    let noteXML = new DOMParser().parseFromString(note, 'application/xml');
     let content = noteXML.getElementsByTagName('content')[0].textContent;
     editor.setValue(content);
     $('#note-opened').attr('name',notepath);
@@ -38,5 +48,11 @@ function updateDisplayNotes() {
     });
 }
 
+document.addEventListener('click', function (event) {
+    if (event.target.tagName === 'A' && event.target.href.startsWith('file')) {
+        event.preventDefault();
+        openFile(event.target.href.replace('file://',''));
+    }
+})
 
 updateDisplayNotes();

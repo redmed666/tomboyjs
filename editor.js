@@ -2,5 +2,5 @@ var editor = new tui.Editor({
     el: document.querySelector('#note-opened'),
     initialEditType: 'markdown',
     previewStyle: 'vertical',
-    height: '300px'
+    minHeight: $(window).height()*0.8
 });

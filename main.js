@@ -15,6 +15,15 @@ function createWindow() {
     win.on('closed', () => {
         win = null;
     });
+
+    win.on('resize', (e) => {
+        console.log('Hey before');
+        e.preventDefault();
+        console.log('hey after');
+        editor.height = $(window).height()*0.8;
+    });
 };
+
+
 
 app.on('ready', createWindow);
