@@ -2,15 +2,28 @@ const {ipcRenderer, remote} = require('electron');
 const {globalShortcut} = remote;
 
 globalShortcut.register('CommandOrControl+S', () => {
-    let filename = $('#note-opened').attr('name');
-    let note = fs.readFileSync(filename);
+    let notepath = $('#note-opened').attr('name');
+    let note = fs.readFileSync(notepath);
     let noteXML = new DOMParser().parseFromString(note, 'application/xml');
-
+    
     let newContent = editor.getValue();
-    noteXML.getElementsByTagName('content')[0].textContent = newContent;
-    let newTitle = $('<textarea />').html(editor.getValue()).text().split('\n')[0];
+    let newTitle = $('<textarea />').html(editor.getValue()).text().split('\n')[0].replace('#','');
+
+    linkMap.set(notepath, newTitle);
+    linkMap.forEach((value, key) => {
+        if (value !== newTitle) {
+            let varReg = '^'+value+'|'+value+'$'+'|'+' '+value+'|'+value + ' '
+            let regVal = new RegExp(varReg, 'g');
+            newContent = newContent.replace(regVal, '<a href=\"'+ key +'\">'+ value +'</a>');
+
+        }
+    })
     noteXML.getElementsByTagName('title')[0].textContent = newTitle;
+    noteXML.getElementsByTagName('content')[0].textContent = newContent;
+    
     let newNoteToWrite = new XMLSerializer().serializeToString(noteXML);
-    fs.writeFileSync(filename, newNoteToWrite);
+    fs.writeFileSync(notepath, newNoteToWrite);
     updateDisplayNotes();
+    editor.setValue(newContent);
+
 });

@@ -9,7 +9,7 @@ function openFile(notepath) {
     }
     let note = fs.readFileSync(notepath);
     let noteXML = new DOMParser().parseFromString(note, 'application/xml');
-    let title = noteXML.getElementsByTagName('title')[0].textContent;
+    let title = noteXML.getElementsByTagName('title')[0].textContent.replace('#','');
     let newTab = '<li class=\"nav-item\"><a class=\"nav-link\" onClick=\"updateEditor(this.id)\" id=\"'+ notepath +'\">'+ title +'</a></li>';
     $('#notes-opened').append(newTab);
 }
@@ -40,11 +40,14 @@ function updateDisplayNotes() {
     let files = fs.readdirSync(notespath);
     $('#notes').empty();
     files.forEach((file,index) => {
-        let note = fs.readFileSync(notespath+file);
+        let notepath = notespath+file;
+        let note = fs.readFileSync(notepath);
         let noteXML = new DOMParser().parseFromString(note, 'application/xml');
-        let title = noteXML.getElementsByTagName('title')[0].textContent;
+        let title = noteXML.getElementsByTagName('title')[0].textContent.replace('#','');
         let updatedList = '<li><button class=\"btn btn-secondary\" onClick=\"openFile(this.id)\" id=\"'+notespath+file+'\">'+title+'</button></li>';
         $('#notes').append(updatedList);
+
+        linkMap.set(notepath, title);
     });
 }
 
