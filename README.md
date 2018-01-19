@@ -9,11 +9,11 @@ electron .
 
 ## TODO
 * Research function
+* ~~Resize editor with window~~
+* CSS fine tuning (kind of crappy)
+* Autosave
+* Bundle for the different OS
+* Systray
+* Configuration file in order to set up anywhere and not specially inside homedir
 * Backup to git (with gist or something like that?)
 * Notes encryption
-* Configuration file in order to set up anywhere and not specially inside homedir
-* CSS fine tuning (kind of crappy)
-* Resize editor with window
-* Autosave
-* Systray
-* Bundle for the different OS
