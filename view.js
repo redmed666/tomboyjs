@@ -1,6 +1,7 @@
 let $ = require('jquery');
 let fs = require('fs');
 let os = require('os');
+const {remote} = require('electron');
 let notespath = os.homedir() + '/tomboynotes/';
 
 function openFile(notepath) {
