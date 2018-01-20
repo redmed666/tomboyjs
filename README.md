@@ -24,7 +24,7 @@ electron-packager . tomboyjs --overwrite --asar=true --platform=linux --arch=x64
 ```
 
 ## TODO
-* Research function
+* ~~Search function~~
 * ~~Resize editor with window~~
 * Add close button for tabs
 * ~~CSS fine tuning (kind of crappy)~~ (still crap but better?)
