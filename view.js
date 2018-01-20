@@ -17,6 +17,7 @@ function openFile(notepath) {
 
     let newTab = '<li class=\"nav-item\"><a class=\"nav-link\" onClick=\"updateEditor(this.id)\" id=\"'+ notepath +'\">'+ title +'</a></li>';
     $('#notes-opened').append(newTab);
+    updateEditor(notepath);
 }
 
 function updateEditor(notepath) {
@@ -25,17 +26,9 @@ function updateEditor(notepath) {
     let content = noteXML.getElementsByTagName('content')[0].textContent;
     editor.setValue(content);
     $('#note-opened').attr('name',notepath);
-}
-
-function search(string) {
-    let notes = fs.readdirSync(notespath);
-    $('#found').empty();
-    notes.forEach((note,index) => {
-        let indexOfString = note.indexOf(string);
-        if( indexOfString >= 0) {
-
-        }
-    });
+    $("a").removeClass('active');
+    $("a[id*='"+notepath+"']").addClass('active');
+    $('#main').css('display', 'block');
 }
 
 function updateDisplayNotes() {

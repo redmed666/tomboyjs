@@ -5,13 +5,3 @@ let tab = tabGroup.addTab({
     visible: true,
     active: true
 });
-
-/*
-       <div class="etabs-tabgroup">
-                <div class="etabs-tabs"></div>
-                <div class="etabs-buttons"></div>
-        </div>
-            
-        <div class="etabs-views"></div>
-        <script src="tabs.js"></script>
-*/
