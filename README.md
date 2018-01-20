@@ -7,13 +7,29 @@ npm install -g electron
 
 electron .
 
+# Package
+Windows
+```
+electron-packager . tomboyjs --overwrite --asar=true --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName="tomboyjs"
+```
+
+Mac
+```
+electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds
+```
+
+Linux
+```
+electron-packager . tomboyjs --overwrite --asar=true --platform=linux --arch=x64 --prune=true --out=release-builds
+```
+
 ## TODO
 * Research function
 * ~~Resize editor with window~~
 * CSS fine tuning (kind of crappy)
 * Autosave
-* Bundle for the different OS
-* Systray
+* ~~Bundle for the different OS~~
+* Systray: Add functionalities
 * Configuration file in order to set up anywhere and not specially inside homedir
 * Backup to git (with gist or something like that?)
 * Notes encryption
