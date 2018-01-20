@@ -35,7 +35,7 @@ function search(string) {
         if( indexOfString >= 0) {
 
         }
-    })
+    });
 }
 
 function updateDisplayNotes() {
@@ -59,7 +59,11 @@ function updateDisplayNotes() {
 document.addEventListener('click', function (event) {
     if (event.target.tagName === 'A' && event.target.href.startsWith('file')) {
         event.preventDefault();
-        openFile(event.target.href.replace('file://',''));
+        if(os.platform().toString() !== 'win32' ) {
+            openFile(event.target.href.replace('file:///','/'));
+        } else {
+            openFile(event.target.href.replace('file:///',''));   
+        }
     }
 });
 

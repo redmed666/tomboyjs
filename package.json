@@ -13,5 +13,8 @@
     "jquery": "^3.2.1",
     "path": "^0.12.7",
     "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "electron-packager": "^10.1.1"
   }
 }

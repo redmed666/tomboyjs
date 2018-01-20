@@ -12,8 +12,17 @@ function createWindow() {
         slashes: true
     }));
 
+    win.webContents.openDevTools();
+
     win.on('closed', () => {
         win = null;
+    });
+
+    win.on('window-all-closed', () => {
+        globalShortcut.unregisterAll();
+        if (process.platform !== 'darwin') {
+            app.quit();
+        }
     });
 };
 
