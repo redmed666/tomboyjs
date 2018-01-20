@@ -15,9 +15,15 @@ function openFile(notepath) {
         return;
     }
 
-    let newTab = '<li class=\"nav-item\"><a class=\"nav-link\" onClick=\"updateEditor(this.id)\" id=\"'+ notepath +'\">'+ title +'</a></li>';
+    let newTab = '<li class=\"nav-item\" id=\"'+title+'\"><a class=\"nav-link\" onClick=\"updateEditor(this.id)\" id=\"'+ notepath +'\">'+ title +'<button class="close closeTab" type="button" onClick=\"closeTab(this.parentNode.id)\">X</button></a></li>';
     $('#notes-opened').append(newTab);
     updateEditor(notepath);
+}
+
+function closeTab(tabname) {
+    $("a[id*='"+tabname+"']").remove();
+    $('#found').css('display', 'none');
+    $('note-opened').css('display', 'none');
 }
 
 function updateEditor(notepath) {
