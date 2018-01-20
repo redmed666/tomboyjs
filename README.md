@@ -26,9 +26,9 @@ electron-packager . tomboyjs --overwrite --asar=true --platform=linux --arch=x64
 ## TODO
 * ~~Search function~~
 * ~~Resize editor with window~~
-* Add close button for tabs
+* ~~Add close button for tabs~~
 * ~~CSS fine tuning (kind of crappy)~~ (still crap but better?)
-* Autosave
+* ~~Autosave~~
 * ~~Bundle for the different OS~~
 * Systray: Add functionalities
 * Configuration file in order to set up anywhere and not specially inside homedir

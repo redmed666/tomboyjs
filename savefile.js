@@ -1,8 +1,12 @@
 const {ipcRenderer} = require('electron');
 const {globalShortcut} = remote;
 
-globalShortcut.register('CommandOrControl+S', () => {
+function save() {
+    console.log('saving');
     let notepath = $('#note-opened').attr('name');
+    if (notepath === '' || notepath === undefined) {
+        return;
+    }
     let note = fs.readFileSync(notepath);
     let noteXML = new DOMParser().parseFromString(note, 'application/xml');
     
@@ -25,4 +29,10 @@ globalShortcut.register('CommandOrControl+S', () => {
     updateDisplayNotes();
     editor.setValue(newContent);
     $("a[id*='"+notepath+"']").val(newTitle);
-});
+}
+
+globalShortcut.register('CommandOrControl+S', save);
+
+(function(){
+    setInterval(save, 5000);
+})();
