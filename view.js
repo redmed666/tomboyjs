@@ -36,6 +36,7 @@ function updateEditor(notepath) {
     $("a").removeClass('active');
     $("a[id*='"+notepath+"']").addClass('active');
     $('#main').css('display', 'block');
+    $('#found').css('display', 'none');
 }
 
 function updateDisplayNotes() {
