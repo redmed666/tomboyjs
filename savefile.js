@@ -33,6 +33,8 @@ function save() {
 
 globalShortcut.register('CommandOrControl+S', save);
 
+/*
 (function(){
     setInterval(save, 5000);
 })();
+*/
