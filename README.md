@@ -24,11 +24,16 @@ electron-packager . tomboyjs --overwrite --asar=true --platform=linux --arch=x64
 ```
 
 ## TODO
+* Search function inside note
+* Create new tab when creating a new note
+* Rename tab when changing title
+* Add a star when the content of the editor is different from the saved note
+* Autosave when changing note 
+* Autosave
 * ~~Search function~~
 * ~~Resize editor with window~~
 * ~~Add close button for tabs~~
 * ~~CSS fine tuning (kind of crappy)~~ (still crap but better?)
-* ~~Autosave~~
 * ~~Bundle for the different OS~~
 * Systray: Add functionalities
 * Configuration file in order to set up anywhere and not specially inside homedir
