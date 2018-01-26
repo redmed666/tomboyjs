@@ -2,6 +2,7 @@ const {ipcRenderer} = require('electron');
 const {globalShortcut} = remote;
 
 function save() {
+
     console.log('saving');
     let notepath = $('#note-opened').attr('name');
     if (notepath === '' || notepath === undefined) {
@@ -31,7 +32,12 @@ function save() {
     $("a[id*='"+notepath+"']").val(newTitle);
 }
 
-globalShortcut.register('CommandOrControl+S', save);
+$(document).focusout(() => {
+    globalShortcut.unregisterAll();   
+});
+$(document).focusin(() => {
+    globalShortcut.register('CommandOrControl+S', save);
+});
 
 /*
 (function(){
