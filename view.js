@@ -16,6 +16,8 @@ function openFile(notepath) {
         return;
     }
 
+    save();
+
     let newTab = '<li class=\"nav-item\" id=\"'+title+'\"><a class=\"nav-link\" onClick=\"updateEditor(this.id)\" id=\"'+ notepath +'\">'+ title +'<button class="close closeTab" type="button" onClick=\"closeTab(this.parentNode.id)\">X</button></a></li>';
     $('#notes-opened').append(newTab);
     updateEditor(notepath);
