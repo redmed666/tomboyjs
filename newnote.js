@@ -24,4 +24,7 @@ $('#create-new-note').on('click', () => {
     $('#notes').append(updatedList);
     editor.setValue(notename);
     $('#note-opened').attr('name',notepath);
+
+    let newTab = '<li class=\"nav-item\" id=\"'+notename+'\"><a class=\"nav-link\" onClick=\"updateEditor(this.id)\" id=\"'+ notepath +'\">'+ notename +'<button class="close closeTab" type="button" onClick=\"closeTab(this.parentNode.id)\">X</button></a></li>';
+    $('#notes-opened').append(newTab);
 })
