@@ -1,4 +1,5 @@
 const {ipcRenderer} = require('electron');
+const {remote} = require('electron');
 const {globalShortcut} = remote;
 
 function save() {
@@ -29,7 +30,7 @@ function save() {
     fs.writeFileSync(notepath, newNoteToWrite);
     updateDisplayNotes();
     editor.setValue(newContent);
-    $("a[id*='"+notepath+"']").val(newTitle);
+    $("a[id*='"+notepath+"']").text(newTitle);
 }
 
 $(document).focusout(() => {
