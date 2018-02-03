@@ -24,7 +24,7 @@ electron-packager . tomboyjs --overwrite --asar=true --platform=linux --arch=x64
 ```
 
 ## TODO
-* Search function inside note
+* Search inside note function
 * ~~Create new tab when creating a new note~~
 * ~~Rename tab when changing title~~
 * Add a star when the content of the editor is different from the saved note

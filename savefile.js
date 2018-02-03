@@ -30,7 +30,7 @@ function save() {
     fs.writeFileSync(notepath, newNoteToWrite);
     updateDisplayNotes();
     editor.setValue(newContent);
-    $("a[id*='"+notepath+"']").text(newTitle);
+    $("a[id*='"+notepath+"']").text(newTitle).append('<button class="close closeTab" type="button" onClick=\"closeTab(this.parentNode.id)\">X</button>');
 }
 
 $(document).focusout(() => {
