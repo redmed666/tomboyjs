@@ -30,6 +30,7 @@ electron-packager . tomboyjs --overwrite --asar=true --platform=linux --arch=x64
 * Add a star when the content of the editor is different from the saved note
 * Autosave when changing note 
 * Autosave
+* Add the possibility to create a structure of notes (put bunch of notes under the same parent, ...)
 * ~~Search function~~
 * ~~Resize editor with window~~
 * ~~Add close button for tabs~~
