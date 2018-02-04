@@ -5,7 +5,7 @@ $('#create-new-note').on('click', () => {
         fs.mkdirSync(notespath);
     }
     let notename = "notes_" + date.getTime().toString();
-    let notepath = notespath + '/' + notename;
+    let notepath = notespath + notename;
     var noteXML = document.implementation.createDocument ('http://www.w3.org/1999/xhtml', 'xml', null);
     var title = document.createElementNS('http://www.w3.org/1999/xhtml', 'title');
     title.textContent = notename;
@@ -19,12 +19,11 @@ $('#create-new-note').on('click', () => {
     fs.writeFileSync(notespath+notename, note, (err) => {
         console.log(err);
     });
-
-    let updatedList = '<li><button class=\"btn btn-secondary\" onClick=\"openFile(this.id)\" id=\"'+notespath+notename+'\">'+notename+'</button></li>';
+    let updatedList = createNavLink(notename, notename);
     $('#notes').append(updatedList);
     editor.setValue(notename);
     $('#note-opened').attr('name',notepath);
-
-    let newTab = '<li class=\"nav-item\" id=\"'+notename+'\"><a class=\"nav-link\" onClick=\"updateEditor(this.id)\" id=\"'+ notepath +'\">'+ notename +'<button class="close closeTab" type="button" onClick=\"closeTab(this.parentNode.id)\">X</button></a></li>';
+    
+    let newTab = createTab(notepath, notename);
     $('#notes-opened').append(newTab);
 })

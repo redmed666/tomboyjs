@@ -3,6 +3,14 @@ let fs = require('fs');
 let os = require('os');
 let notespath = os.homedir() + '/tomboynotes/';
 
+function createNavLink(filename, title) {
+    return '<li class=\"nav-item\"><button class=\"btn btn-secondary\" onClick=\"openFile(this.id)\" id=\"'+notespath+filename+'\">'+title+'<a onClick=\"deleteFile(this.parentNode.id, this.parentNode.textContent);return false;\">X</a></button></li>';
+}
+
+function createTab(notepath, title) {
+    return '<li class=\"nav-item\" id=\"'+title+'\"><a class=\"nav-link\" onClick=\"updateEditor(this.id)\" id=\"'+ notepath +'\">'+ title +'<button class="close closeTab" type="button" onClick=\"closeTab(this.parentNode.id); return false;\">X</button></a></li>';
+}
+
 function openFile(notepath) {
     if (!fs.existsSync(notepath)) {
         alert('File doesn\'t exist! File requested = ' + notepath);
@@ -17,7 +25,7 @@ function openFile(notepath) {
 
     save();
 
-    let newTab = '<li class=\"nav-item\" id=\"'+title+'\"><a class=\"nav-link\" onClick=\"updateEditor(this.id)\" id=\"'+ notepath +'\">'+ title +'<button class="close closeTab" type="button" onClick=\"closeTab(this.parentNode.id)\">X</button></a></li>';
+    let newTab = createTab(notepath, title);
     $('#notes-opened').append(newTab);
     updateEditor(notepath);
 }
@@ -51,11 +59,22 @@ function updateDisplayNotes() {
         let note = fs.readFileSync(notepath);
         let noteXML = new DOMParser().parseFromString(note, 'application/xml');
         let title = noteXML.getElementsByTagName('title')[0].textContent.replace('#','').trim();
-        let updatedList = '<li><button class=\"btn btn-secondary\" onClick=\"openFile(this.id)\" id=\"'+notespath+file+'\">'+title+'</button></li>';
+        let updatedList = createNavLink(file, title);
         $('#notes').append(updatedList);
 
         linkMap.set(notepath, title);
     });
+}
+
+function deleteFile(filepath, title) {
+    console.log(filepath);
+    if(confirm('Are you sure you want to delete ' + title.slice(0, title.length - 1) + '?')) {
+        closeTab(filepath);
+        fs.unlinkSync(filepath);
+        updateDisplayNotes();
+    } else {
+        return;
+    }
 }
 
 document.addEventListener('click', function (event) {
