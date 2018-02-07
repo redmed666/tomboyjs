@@ -41,7 +41,6 @@ function createWindow() {
             { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
         ]}
     ];
-
     Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 };
 
