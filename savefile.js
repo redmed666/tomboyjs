@@ -29,7 +29,6 @@ function save() {
     let newNoteToWrite = new XMLSerializer().serializeToString(noteXML);
     fs.writeFileSync(notepath, newNoteToWrite);
     updateDisplayNotes();
-    editor.setValue(newContent);
     $("a[id*='"+notepath+"']").text(newTitle).append('<button class="close closeTab" type="button" onClick=\"closeTab(this.parentNode.id)\">X</button>');
 }
 
