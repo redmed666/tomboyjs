@@ -27,41 +27,37 @@
     </head>
 
     <body data-offset="20">
-        <div class="container">
-            <ul class="nav nav-tabs" id="notes-opened">
-            </ul>
-            <!-- Toggable panel -->
-            <nav class="panel panel-default">
-                <nav class="col-sm-3" id="scrollSpy">
-                    <div class="container-fluid">
-                        <div id="mySidenav" class="sidenav">
-                                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                                <ul id="notes">
-                                </ul>
-                        </div>
+        <ul class="nav nav-tabs" id="notes-opened">
+        </ul>
+        <!-- Toggable panel -->
+        <nav class="panel panel-default">
+            <nav class="col-sm-3" id="scrollSpy">
+                <div class="container-fluid">
+                    <div id="mySidenav" class="sidenav">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            <ul id="notes">
+                            </ul>
                     </div>
-                </nav>
+                </div>
             </nav>
-            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Files</span>
-
+        </nav>
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Files</span>
+        
+        <div id="main">    
             <!-- Search -->
             <input type="text" id="search-field">
             <button class="btn btn-primary" id="search" onclick="search()">Search</button>
+            <!-- New note creation -->
+            <button class="btn btn-primary" id="create-new-note">Create new note</button>
 
-            <div id="main">    
-                <!-- New note creation -->
-                <button class="btn btn-primary" id="create-new-note">Create new note</button>
-
-                <!-- Editor + note opened -->
-                <div id="note-opened" name="">
-                </div>
+            <!-- Editor + note opened -->
+            <div id="note-opened" name="">
             </div>
+        </div>
 
-            <div id="search">
-                <ul class="nav" id="found">
-                </ul>
-            </div>
-
+        <div id="search">
+            <ul class="nav" id="found">
+            </ul>
         </div>
 
         <!--
@@ -73,8 +69,8 @@
         <script src="view.js"></script>
         <script>
             function openNav() {
-                document.getElementById("mySidenav").style.width = "250px";
-                document.getElementById("main").style.marginLeft = "150px"
+                document.getElementById("mySidenav").style.width = "350px";
+                document.getElementById("main").style.marginLeft = "350px"
 
             }
             

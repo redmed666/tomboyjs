@@ -4,7 +4,7 @@ let os = require('os');
 let notespath = os.homedir() + '/tomboynotes/';
 
 function createNavLink(filename, title) {
-    return '<li class=\"nav-item\"><button class=\"btn btn-secondary\" onClick=\"openFile(this.id)\" id=\"'+notespath+filename+'\">'+title+'<a onClick=\"deleteFile(this.parentNode.id, this.parentNode.textContent);return false;\">X</a></button></li>';
+    return '<li class=\"nav-item\"><button class=\"btn btn-secondary\" onClick=\"openFile(this.id)\" id=\"'+notespath+filename+'\">'+title+'&nbsp;&nbsp;<span onClick=\"deleteFile(this.parentNode.id, this.parentNode.textContent);return false;\">[X]</span></button></li>';
 }
 
 function createTab(notepath, title) {

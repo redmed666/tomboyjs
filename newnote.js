@@ -20,10 +20,8 @@ $('#create-new-note').on('click', () => {
         console.log(err);
     });
     let updatedList = createNavLink(notename, notename);
-    $('#notes').append(updatedList);
-    editor.setValue(notename);
-    $('#note-opened').attr('name',notepath);
-    
+    $('#notes').append(updatedList);    
     let newTab = createTab(notepath, notename);
     $('#notes-opened').append(newTab);
+    updateEditor(notepath);
 })
