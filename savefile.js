@@ -13,7 +13,7 @@ function save() {
     let noteXML = new DOMParser().parseFromString(note, 'application/xml');
     
     let newContent = editor.getValue();
-    let newTitle = $('<textarea />').html(editor.getValue()).text().split('\n')[0].replace('#','').trim();
+    let newTitle = $('<textarea />').html(editor.getValue()).text().split('\n')[0].replace('#','').trim().toLowerCase();
 
     linkMap.set(notepath, newTitle);
     linkMap.forEach((value, key) => {
@@ -21,7 +21,7 @@ function save() {
             let tmp = key.split('/');
             let filename = tmp[tmp.length - 1];
             let varReg = '^'+value+'|'+value+'$'+'|'+' '+value+'|'+value + ' '
-            let regVal = new RegExp(varReg, 'g');
+            let regVal = new RegExp(varReg, 'gi');
             newContent = newContent.replace(regVal, ' <a href=\"'+ filename +'\">'+ value +'</a> ');
         }
     })

@@ -62,7 +62,7 @@ function updateDisplayNotes() {
         let updatedList = createNavLink(file, title);
         $('#notes').append(updatedList);
 
-        linkMap.set(notepath, title);
+        linkMap.set(notepath, title.toLowerCase());
     });
 }
 
