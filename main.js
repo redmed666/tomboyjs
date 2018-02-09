@@ -44,6 +44,4 @@ function createWindow() {
     Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 };
 
-
-
 app.on('ready', createWindow);

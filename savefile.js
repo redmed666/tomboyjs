@@ -18,9 +18,11 @@ function save() {
     linkMap.set(notepath, newTitle);
     linkMap.forEach((value, key) => {
         if (value !== newTitle) {
+            let tmp = key.split('/');
+            let filename = tmp[tmp.length - 1];
             let varReg = '^'+value+'|'+value+'$'+'|'+' '+value+'|'+value + ' '
             let regVal = new RegExp(varReg, 'g');
-            newContent = newContent.replace(regVal, ' <a href=\"'+ key +'\">'+ value +'</a> ');
+            newContent = newContent.replace(regVal, ' <a href=\"'+ filename +'\">'+ value +'</a> ');
         }
     })
     noteXML.getElementsByTagName('title')[0].textContent = newTitle;
